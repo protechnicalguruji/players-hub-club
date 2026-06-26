@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Lora", serif;
+    --font-body: "Plus Jakarta Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 0.625rem;
+
+    --background: 0.97 0.01 270;
+    --foreground: 0.15 0.02 250;
+    --card: 0.96 0.01 270;
+    --card-foreground: 0.18 0.02 250;
+    --popover: 0.96 0.01 270;
+    --popover-foreground: 0.15 0.02 250;
+
+    --primary: 0.48 0.17 120;
+    --primary-foreground: 0.95 0.01 270;
+
+    --secondary: 0.35 0.08 140;
+    --secondary-foreground: 0.92 0.01 270;
+    --muted: 0.28 0.02 280;
+    --muted-foreground: 0.68 0.02 260;
+
+    --accent: 0.72 0.25 60;
+    --accent-foreground: 0.08 0.01 270;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.22 0.01 280;
+    --input: 0.22 0.01 280;
+    --ring: 0.72 0.25 60;
+
+    --chart-1: 0.48 0.17 120;
+    --chart-2: 0.35 0.08 140;
+    --chart-3: 0.72 0.25 60;
+    --chart-4: 0.65 0.12 30;
+    --chart-5: 0.58 0.2 50;
+
+    --sidebar: 0.12 0.01 270;
+    --sidebar-foreground: 0.92 0.01 270;
+    --sidebar-primary: 0.72 0.25 60;
+    --sidebar-primary-foreground: 0.08 0.01 270;
+    --sidebar-accent: 0.35 0.08 140;
+    --sidebar-accent-foreground: 0.92 0.01 270;
+    --sidebar-border: 0.22 0.01 280;
+    --sidebar-ring: 0.72 0.25 60;
+  }
+
+  .dark {
+    --background: 0.08 0.01 270;
+    --foreground: 0.92 0.01 270;
+    --card: 0.12 0.01 270;
+    --card-foreground: 0.92 0.01 270;
+    --popover: 0.15 0.01 270;
+    --popover-foreground: 0.92 0.01 270;
+
+    --primary: 0.72 0.25 60;
+    --primary-foreground: 0.08 0.01 270;
+
+    --secondary: 0.32 0.12 140;
+    --secondary-foreground: 0.88 0.01 270;
+    --muted: 0.22 0.02 280;
+    --muted-foreground: 0.65 0.02 260;
+
+    --accent: 0.78 0.28 62;
+    --accent-foreground: 0.08 0.01 270;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.08 0.01 270;
+
+    --border: 0.18 0.01 280;
+    --input: 0.18 0.01 280;
+    --ring: 0.78 0.28 62;
+
+    --chart-1: 0.72 0.25 60;
+    --chart-2: 0.32 0.12 140;
+    --chart-3: 0.48 0.17 120;
+    --chart-4: 0.68 0.18 50;
+    --chart-5: 0.62 0.22 30;
+
+    --sidebar: 0.1 0.01 270;
+    --sidebar-foreground: 0.92 0.01 270;
+    --sidebar-primary: 0.78 0.28 62;
+    --sidebar-primary-foreground: 0.08 0.01 270;
+    --sidebar-accent: 0.32 0.12 140;
+    --sidebar-accent-foreground: 0.88 0.01 270;
+    --sidebar-border: 0.18 0.01 280;
+    --sidebar-ring: 0.78 0.28 62;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  @font-face {
+    font-family: "Lora";
+    src: url("/assets/fonts/Lora.woff2") format("woff2");
+    font-weight: 400 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+    font-weight: 400 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "JetBrains Mono";
+    src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+    font-weight: 400 700;
+    font-display: swap;
+  }
+
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .glow-gold {
+    box-shadow: 0 10px 15px -3px oklch(var(--accent) / 0.3), 0 4px 6px -4px
+      oklch(var(--accent) / 0.3);
+  }
+
+  .glow-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glow-hover:hover {
+    box-shadow: 0 10px 15px -3px oklch(var(--accent) / 0.4), 0 4px 6px -4px
+      oklch(var(--accent) / 0.4);
+  }
+
+  .card-luxury {
+    @apply rounded-lg border border-border backdrop-blur-sm;
+    background-color: oklch(var(--card) / 0.6);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-luxury:hover {
+    background-color: oklch(var(--card) / 0.8);
+    border-color: oklch(var(--accent) / 0.3);
+  }
+
+  /* ─── Menu card hover ──────────────────────────────────── */
+  .menu-card {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow
+      0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s
+      cubic-bezier(0.4, 0, 0.2, 1), background 0.35s
+      cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  .menu-card:hover {
+    transform: scale(1.025) translateY(-2px);
+    box-shadow: 0 8px 32px -8px rgba(212, 175, 55, 0.35), 0 0 0 1px
+      rgba(212, 175, 55, 0.22);
+    border-color: rgba(212, 175, 55, 0.5) !important;
+  }
+  .menu-card:hover .menu-card-emoji {
+    transform: scale(1.12);
+  }
+  .menu-card:hover .menu-card-title {
+    color: #f0d060 !important;
+  }
+  .menu-card-emoji {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-block;
+  }
+  .menu-card-title {
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ─── Menu item row hover ───────────────────────────────── */
+  .menu-item-row {
+    transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-left-color
+      0.2s cubic-bezier(0.4, 0, 0.2, 1), padding-left 0.2s
+      cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 2px solid transparent;
+    padding-left: 4px;
+    border-radius: 4px;
+  }
+  .menu-item-row:hover {
+    background: rgba(212, 175, 55, 0.06);
+    border-left-color: rgba(212, 175, 55, 0.7);
+    padding-left: 8px;
+  }
+  .menu-item-row:hover .menu-item-price {
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.7);
+  }
+  .menu-item-price {
+    transition: text-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ─── Menu section title shimmer ───────────────────────── */
+  .menu-title-shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(var(--accent)) 20%,
+      #fffde7 45%,
+      oklch(var(--accent)) 55%,
+      oklch(var(--accent)) 80%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gold-shimmer 3.5s linear infinite;
+  }
+
+  /* ─── Category divider shimmer ──────────────────────────── */
+  .menu-divider-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-divider-shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.7) 50%,
+      transparent 100%
+    );
+    animation: shimmer-sweep 2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+  }
+
+  /* ─── Best Value badge shimmer ──────────────────────────── */
+  .best-value-badge {
+    background: linear-gradient(
+      270deg,
+      #d4af37 0%,
+      #ffe97d 40%,
+      #d4af37 70%,
+      #b8942b 100%
+    );
+    background-size: 200% 200%;
+    animation: badge-shimmer 2.5s ease infinite;
+    color: #0b0b0b;
+  }
+
+  /* ─── Fade in up for menu items ─────────────────────────── */
+  .menu-item-fade {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s
+      cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .menu-item-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── Gaming zone card glow hover ───────────────────────── */
+  .gaming-card-glow:hover {
+    box-shadow: 0 10px 30px -8px rgba(15, 61, 46, 0.55), 0 0 0 1px
+      rgba(15, 61, 46, 0.4);
+    border-color: rgba(15, 61, 46, 0.7) !important;
+  }
+}
